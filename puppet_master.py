@@ -118,12 +118,12 @@ class PuppetMaster(object):
         ssid=re.match('s/^ssid=\(.\+\)$/\1/p', conf)
         passphrase = re.match('s/^passphrase=\(.\+\)$/\1/p', conf)
         hide_hostname = re.match('s/^hide_hostname=\(.\+\)$/\1/p', conf)
-        return {'ssid'=ssid, 'passphrase'=passphrase, 'hide_hostname'=hide_hostname}
+        return {'ssid':ssid, 'passphrase':passphrase, 'hide_hostname':hide_hostname}
 
     def _disable_hostpot(self):
         conf_path = self.config.wifi.hostspot_conf_file
         if os.path.isfile(conf_path):
-            os.system("sudo mv %s %s" % (conf_path, os.path.join(conf_path, '.backup'))
+            os.system("sudo mv %s %s" % (conf_path, os.path.join(conf_path, '.backup')))
             call(['sudo', 'systemctl', 'restart', self.config.wifi.hostspot_service])
 
     def _enable_hostspot(self):
@@ -142,7 +142,7 @@ class PuppetMaster(object):
 
     def _wifi_list(self):
         pass
-    def _wifi connect(self, ssid, password):
+    def _wifi_connect(self, ssid, password):
         pass
 
     def shutdown(self):
